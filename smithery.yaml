@@ -3,20 +3,18 @@ startCommand:
   command: ["node", "dist/index.js"]
 
 configSchema:
-  type: object
-  properties:
-    PORT:
-      type: integer
-      description: "The port the server will run on."
-      default: 8080
-    API_KEY:
-      type: string
-      description: "API key for authentication"
-    LOG_LEVEL:
-      type: string
-      enum: ["debug", "info", "warn", "error"]
-      default: "info"
-  required: ["API_KEY"]
+  PORT:
+    type: number
+    description: "The port the server will run on."
+    default: 8080
+  API_KEY:
+    type: string
+    description: "API key for authentication"
+    required: true
+  LOG_LEVEL:
+    type: string
+    enum: ["debug", "info", "warn", "error"]
+    default: "info"
 
 commandFunction: |
   function (config) {
