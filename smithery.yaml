@@ -1,0 +1,32 @@
+startCommand:
+  type: stdio
+  command: ["node", "dist/index.js"]
+
+configSchema:
+  type: object
+  properties:
+    PORT:
+      type: integer
+      description: "The port the server will run on."
+      default: 8080
+    API_KEY:
+      type: string
+      description: "API key for authentication"
+    LOG_LEVEL:
+      type: string
+      enum: ["debug", "info", "warn", "error"]
+      default: "info"
+  required: ["API_KEY"]
+
+commandFunction: |
+  function (config) {
+    return {
+      command: ["node", "dist/index.js"],
+      args: [],
+      env: {
+        PORT: config.PORT || 8080,
+        API_KEY: config.API_KEY,
+        LOG_LEVEL: config.LOG_LEVEL || "info"
+      }
+    };
+  }
