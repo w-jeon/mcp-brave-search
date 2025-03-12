@@ -5,7 +5,7 @@ FROM node:22.12-alpine AS builder
 WORKDIR /app
 
 # Copy package.json and package-lock.json first (Docker caching optimization)
-COPY package.json package-lock.json ./
+COPY package.json ./
 
 # Install dependencies (this is required for build)
 RUN --mount=type=cache,target=/root/.npm npm install
