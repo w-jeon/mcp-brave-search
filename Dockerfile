@@ -16,8 +16,6 @@ COPY . .
 # Compile TypeScript
 RUN npm run build
 
----
-
 # Second Stage: Production
 FROM node:22-alpine AS release
 
